@@ -1,0 +1,42 @@
+@import './reset.css';
+@import './element.css';
+@import './icon.css';
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+body .el-table th.gutter {
+    display: table-cell!important;
+}
+
+body .el-table colgroup.gutter {
+    display: block!important;
+}

@@ -31,7 +31,6 @@ export default new Router({
           name: '首页',
           component: welcome,
         },
-
       ],
     },
     

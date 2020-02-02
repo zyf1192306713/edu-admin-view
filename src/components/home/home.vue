@@ -3,7 +3,8 @@
         <el-container>
               <el-aside width="auto" class="aside">
                    <div class="title">
-                       <img v-if="!isCollapse" src="@/assets/logo.png"  width="120px" alt="" >
+                       <!-- <img v-if="!isCollapse" src="@/assets/logo.png"  width="120px" alt="" > -->
+                       <span>教务系统</span>
                         <i v-if="isCollapse" class="el-icon-s-promotion"></i>
                     </div>
                 <el-menu
@@ -68,8 +69,8 @@
             </el-main>
             <el-footer>
                 <div>
-                    <p>QYTC  &nbsp;  & &nbsp;UMS</p>
-                    <p>2019 © QYTC All rights reserved.</p>
+                    <!-- <p>ZYF  &nbsp;  & &nbsp;EDU</p>
+                    <p>2019 © ZYF All rights reserved.</p> -->
                 </div>
             </el-footer>
             </el-container>
@@ -170,9 +171,10 @@
             this.realName = localStorage.getItem('realName')
             this.roles = localStorage.getItem('roles')
             let id = localStorage.getItem('id')
+            console.log(111)
         },
         methods: {
-             ...mapActions(['toggleSidebar']),
+            //  ...mapActions(['toggleSidebar']),
             isHome(route) {
                 return route.name === "首页";
             },
