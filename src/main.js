@@ -11,6 +11,24 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
+//路由实行之前先判断是否有Token
+router.beforeEach((to, from, next) => {
+  let token = localStorage.getItem('accessToken')
+  if (token) {
+      if (to.path !== '/login') {
+          next()
+      } else {
+          next({ path: '/' })
+      }
+  } else {
+      if (to.path !== '/login') {
+          next({ path: '/login' })
+      } else {
+          next()
+      }
+  }
+})
+
 new Vue({
   el: '#app',
   router,
