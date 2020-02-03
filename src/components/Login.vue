@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <el-form ref="form" :model="loginForm" :rules="loginRules" label-position="left" label-width="0px" class="login-form">
-            <h1 class="title">EDU-ADMIN 后台管理系统</h1>
+            <h1 class="title">EDU-ADMIN 教务系统</h1>
             <el-form-item prop="username">
                 <el-input v-model="loginForm.username" prefix-icon="el-icon-user-solid" type="text" auto-complete="off" placeholder="账号">
                 </el-input>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { checkUser,getCodeImg } from "@/api";
+import { goLogin,getCodeImg } from "@/api";
     export default {
         data(){
             return{
@@ -62,7 +62,7 @@ import { checkUser,getCodeImg } from "@/api";
         },
 
         mounted(){
-            this.getCodeImg();
+            this.getCode();
         },
 
         methods: {
@@ -75,7 +75,7 @@ import { checkUser,getCodeImg } from "@/api";
             loginSubmit () {
                 this.$refs.form.validate(valide => {
                     if (valide) {
-                    checkUser(this.loginForm).then(res => {
+                    goLogin(this.loginForm).then(res => {
                         if (res.code == 0) {    
                             this.$message({
                                 type: 'success',

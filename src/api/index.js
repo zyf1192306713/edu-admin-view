@@ -4,7 +4,7 @@ import router from '../router'
 import { Message, MessageBox } from 'element-ui';
 
 
-const baseURL = 'http://127.0.0.1:8084'
+const baseURL = 'http://47.100.50.14:8084'
 
 axios.defaults.baseURL = baseURL;
 //设置跨域
@@ -43,8 +43,14 @@ axios.interceptors.response.use(function(response) {
     return response
 });
 
+
+// 获取验证码
+export const getCodeImg = params => {
+    return axios.get('/user/getCode', qs.stringify(params)).then(res => res.data)
+}
+
 // 登录
-export const checkUser = params => {
+export const goLogin = params => {
     return axios.post('/user/login', qs.stringify(params)).then(res => res.data)
 }
 
