@@ -66,12 +66,15 @@ import { goLogin,getCodeImg } from "@/api";
         },
 
         methods: {
+            //获取验证码
             getCode() {
                 getCodeImg().then(res => {
                     this.codeUrl = res.img
                     this.loginForm.uuid = res.uuid
                 })
             },
+
+            //提交登录
             loginSubmit () {
                 this.$refs.form.validate(valide => {
                     if (valide) {
@@ -97,12 +100,11 @@ import { goLogin,getCodeImg } from "@/api";
                         }
                     })
                     } else {
-                    // console.log('校验不通过')
+                        // console.log('校验不通过')
                     }
                 })
             },
         }
-        
     }
 </script>
 

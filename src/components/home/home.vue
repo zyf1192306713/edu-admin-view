@@ -1,84 +1,80 @@
 <template>
     <div class="home">
         <el-container>
-              <el-aside width="auto" class="aside">
-                   <div class="title">
-                       <!-- <img v-if="!isCollapse" src="@/assets/logo.png"  width="120px" alt="" > -->
-                       <span>教务系统</span>
-                        <i v-if="isCollapse" class="el-icon-s-promotion"></i>
-                    </div>
+            <el-aside width="auto" class="aside">
+                <div class="title">
+                    <!-- <img v-if="!isCollapse" src="@/assets/logo.png"  width="120px" alt="" > -->
+                    <span>教务系统</span>
+                    <i v-if="isCollapse" class="el-icon-s-promotion"></i>
+                </div>
                 <el-menu
-                :router="true"
-                :collapse="isCollapse"
-                class="el-menu-admin"
-                :default-openeds="defaultOpen"
-                background-color="#393D49"
-                text-color="#fff"
-                active-text-color="#409EFF">
+                    :router="true"
+                    :collapse="isCollapse"
+                    class="el-menu-admin"
+                    :default-openeds="defaultOpen"
+                    background-color="#393D49"
+                    text-color="#fff"
+                    active-text-color="#409EFF">
                     <el-menu-item index="/welcome">
                         <i class="el-icon-reading"></i>
                         <span slot="title">首页</span>
                     </el-menu-item>
-                <el-submenu :index="String(item.id)" v-for="item in leftNav" :key="item.index">
-                    <template slot="title">
-                        <i :class="item.iconCls"></i>
-                        <span>{{item.name}}</span>
-                    </template>
-                    <el-menu-item :index="tag.url" v-for="tag in item.children" :key="tag.index">
-                        <i :class="tag.iconCls"></i>
-                        <span slot="title">{{tag.name}}</span>
-                    </el-menu-item>
-                </el-submenu>
-               
+                    <el-submenu :index="String(item.id)" v-for="item in leftNav" :key="item.index">
+                        <template slot="title">
+                            <i :class="item.iconCls"></i>
+                            <span>{{item.name}}</span>
+                        </template>
+                        <el-menu-item :index="tag.url" v-for="tag in item.children" :key="tag.index">
+                            <i :class="tag.iconCls"></i>
+                            <span slot="title">{{tag.name}}</span>
+                        </el-menu-item>
+                    </el-submenu>
                 </el-menu>
             </el-aside>
        
-        <el-container class="mainContainer">
-             <el-header class="mainContainer-header">
-                <div class="header-left">
-                    <div>
-                        <i v-if="!isCollapse" class="el-icon-s-fold" @click="toggleCollapse"></i>
-                        <i v-if="isCollapse" class="el-icon-s-unfold" @click="toggleCollapse"></i>
-                    </div>
-                    <div class="example-breadcrumb">
-                        <el-breadcrumb separator="/">
-                            <el-breadcrumb-item
-                                v-for="(item,index) in breadList"
-                                :key="index"
-                                :to="{ path: item.path }"
-                            >{{item.name}}</el-breadcrumb-item>
+            <el-container class="mainContainer">
+                <el-header class="mainContainer-header">
+                    <div class="header-left">
+                        <div>
+                            <i v-if="!isCollapse" class="el-icon-s-fold" @click="toggleCollapse"></i>
+                            <i v-if="isCollapse" class="el-icon-s-unfold" @click="toggleCollapse"></i>
+                        </div>
+                        <div class="example-breadcrumb">
+                            <el-breadcrumb separator="/">
+                                <el-breadcrumb-item v-for="(item,index) in breadList" :key="index" :to="{ path: item.path }">{{item.name}}</el-breadcrumb-item>
                             </el-breadcrumb>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <el-dropdown trigger="click">
-                        <span class="welcome el-dropdown-link">
-                            <i class="el-icon-s-custom"></i> [ {{roles}} ] {{realName}}
-                        </span>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item @click.native="updateDialogFormVisible = true">修改密码</el-dropdown-item>
-                            <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </el-dropdown>
-                </div>
-            </el-header>
-            <el-container>
-            <TagsView></TagsView>
-            <el-main style="background-color:#d1cfcf;">
-                <router-view></router-view>
-            </el-main>
-            <el-footer>
-                <div>
-                    <!-- <p>ZYF  &nbsp;  & &nbsp;EDU</p>
-                    <p>2019 © ZYF All rights reserved.</p> -->
-                </div>
-            </el-footer>
+                    <div>
+                        <el-dropdown trigger="click">
+                            <span class="welcome el-dropdown-link">
+                                <i class="el-icon-s-custom"></i> [ {{roles}} ] {{realName}}
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item @click.native="updateDialogFormVisible = true">修改密码</el-dropdown-item>
+                                <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </div>
+                </el-header>
+
+                <el-container>
+                    <TagsView></TagsView>
+                    <el-main style="background-color:#d1cfcf;">
+                        <router-view></router-view>
+                    </el-main>
+                    <el-footer>
+                        <div>
+                            <!-- <p>ZYF  &nbsp;  & &nbsp;EDU</p>
+                            <p>2019 © ZYF All rights reserved.</p> -->
+                        </div>
+                    </el-footer>
+                </el-container>
             </el-container>
-        </el-container>
         </el-container>
 
         <!-- 修改密码话框 -->
-        <el-dialog title="修改密码" class="editProductOrder-dialog" :visible.sync="updateDialogFormVisible" @close="clear('updateForm')" style="width:100%">
+        <el-dialog title="修改密码" class="editPwd-dialog" :visible.sync="updateDialogFormVisible" @close="clear('updateForm')" style="width:100%">
             <el-form :model="updateForm" status-icon :rules="rules" ref="updateForm" style="width:90%">
                 <el-form-item label="原密码" :label-width="formLabelWidth" prop="password">
                     <el-input v-model="updateForm.password" placeholder="原密码" type="password"></el-input>
@@ -102,8 +98,8 @@
 </template>
 
 <script>
-// import { getLeftNav,goLogout,changePwd} from "@/api";
-//  import {mapState, mapActions} from 'vuex'
+import { getLeftNav,goLogout,changePwd} from "@/api";
+ import {mapState, mapActions} from 'vuex'
  import TagsView from './modules/tagsView'
     export default {
         data() {
@@ -171,10 +167,9 @@
             this.realName = localStorage.getItem('realName')
             this.roles = localStorage.getItem('roles')
             let id = localStorage.getItem('id')
-            console.log(111)
         },
         methods: {
-            //  ...mapActions(['toggleSidebar']),
+             ...mapActions(['toggleSidebar']),
             isHome(route) {
                 return route.name === "首页";
             },

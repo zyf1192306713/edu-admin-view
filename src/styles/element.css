@@ -66,8 +66,8 @@
         font-size: 20px;
         color: #000;
     }
-    
-    .addUser-dialog .el-dialog{
+        
+    .editPwd-dialog .el-dialog{
         width: 30%;
     }
     
