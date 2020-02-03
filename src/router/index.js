@@ -33,7 +33,7 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Home',
+      name: '首页',
       component: Home,
       redirect: {
         path: '/welcome',

@@ -39,11 +39,11 @@
                             <i v-if="!isCollapse" class="el-icon-s-fold" @click="toggleCollapse"></i>
                             <i v-if="isCollapse" class="el-icon-s-unfold" @click="toggleCollapse"></i>
                         </div>
-                        <div class="example-breadcrumb">
+                        <!-- <div class="example-breadcrumb">
                             <el-breadcrumb separator="/">
                                 <el-breadcrumb-item v-for="(item,index) in breadList" :key="index" :to="{ path: item.path }">{{item.name}}</el-breadcrumb-item>
                             </el-breadcrumb>
-                        </div>
+                        </div> -->
                     </div>
                     <div>
                         <el-dropdown trigger="click">

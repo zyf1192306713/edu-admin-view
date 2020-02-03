@@ -8,8 +8,15 @@ import ElementUI from 'element-ui';
 import "./styles/index.css";
 import 'element-ui/lib/theme-chalk/index.css';
 
+//引入工具方法
+import {isEmpty} from "./utils/isEmpty.js"
+import {dateFormat} from "./utils/DateFormat.js";
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+
+Vue.prototype.isEmpty = isEmpty;
+Vue.prototype.DateFormat = dateFormat;
 
 //路由实行之前先判断是否有Token
 router.beforeEach((to, from, next) => {

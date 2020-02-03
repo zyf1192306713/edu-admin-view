@@ -67,9 +67,17 @@
         color: #000;
     }
         
+    /* 修改密码弹框 */
     .editPwd-dialog .el-dialog{
         width: 30%;
     }
+
+    /* 添加用户弹框 */
+    .addUser-dialog .el-dialog{
+        width: 30%;
+    }
+
+   
     
     .transfer-dialog .el-dialog{
         width: 28%;
